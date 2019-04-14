@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>201731107139杨亮</title>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+		<style type="text/css">
+			#div1 {
+				float: inherit;
+			}
+
+			.td1 {
+				text-align: center;
+				font-family: 微软雅黑;
+				font-size: 18px;
+				width: auto;
+			}
+
+			.td2 {
+				width: 150px;
+				color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header style="text-align: center;">
+			<h2>用户注册</h2>
+			<hr color="red" />
+		</header>
+		<div id="" align="center">
+			<table style="border-collapse: collapse;">
+				<tr>
+					<td class="td1">用户账号：</td>
+					<td><input type="number" id="username"></td>
+					<td id="username_tip" class="td2"></td>
+				</tr>
+				<tr>
+					<td class="td1">用户密码：</td>
+					<td><input type="password" id="userpwd"></td>
+					<td id="userpwd_tip" class="td2"></td>
+				</tr>
+				<tr>
+					<td class="td1">再次输入密码：</td>
+					<td><input type="password" id="userpwds"></td>
+					<td id="userpwds_tip" class="td2"></td>
+				</tr>
+				<tr>
+					<td class="td1">电子邮件：</td>
+					<td><input type="email" id="useremail"></td>
+					<td id="useremail_tip" class="td2"></td>
+				</tr>
+				<tr>
+					<td class="td1">手机号码：</td>
+					<td><input type="tel" id="usertel"></td>
+					<td id="usertel_tip" class="td2"></td>
+				</tr>
+				<tr>
+					<td class="td1">地址：</td>
+					<td><input type="text" id="useradress"></td>
+					<td id="useradress_tip" class="td2"></td>
+				</tr>
+				<tr>
+					<td style="text-align: center;" colspan="3"><input type="button" id="registered" value="注册" ></td>
+				</tr>
+			</table>
+		</div>
+
+		<script type="text/javascript">
+			$(function() {
+				//验证账号
+				$("#username").keyup(function() {
+					var name_len = $(this).val().length;
+					if (name_len < 10) {
+						$("#username_tip").html("请输入10位数字以上");
+					} else {
+						$("#username_tip").html("");
+					}
+				});
+				//验证密码和确认密码b
+				$("#userpwd").keyup(function() {
+
+					var b = $("#userpwd").val();
+					if (b.length == 0) {
+						$("#userpwd_tip").html("请输入密码");
+					} else {
+						$("#userpwd_tip").html("");
+					}
+				});
+				$("#userpwds").keyup(function() {
+					var a = $("#userpwds").val();
+					var b = $("#userpwd").val();
+					if (a != b) {
+						$("#userpwds_tip").html("两次输入的密码不一致");
+					} else {
+						$("#userpwds_tip").html("");
+					}
+				});
+				//验证邮箱
+				$("#useremail").keyup(function() {
+					if (!$("#useremail").val().match(/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/)) {
+						$("#useremail_tip").html("邮箱或格式不正确");
+					} else {
+						$("#useremail_tip").html("");
+					}
+				});
+				//验证电话
+				$("#usertel").keyup(function() {
+					if (!$("#usertel").val().match(
+							/^(((13[0-9]{1})|(14[0-9]{1})|(17[0]{1})|(15[0-3]{1})|(15[5-9]{1})|(18[0-9]{1}))+\d{8})$/)) {
+						$("#usertel_tip").html("手机号不正确");
+					} else {
+						$("#usertel_tip").html("");
+					}
+				});
+				$("#registered").click(function() {
+					if ($("#username").val()== '') {
+						alert("请输入账号!");
+					};
+					if ($("#userpwd").val()== '') {
+						alert("请输入密码!");
+					};
+					if ($("#useremail").val()== '') {
+						alert("请输入邮箱!");
+					};
+					if ($("#usertel").val() == '') {
+						alert("请输入手机号!");
+					};
+					if ($("#useradress").val() == '') {
+						alert("请输入地址!");
+					};
+				});
+			});
+		</script>
+	</body>
+</html>

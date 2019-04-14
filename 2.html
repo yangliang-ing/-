@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>201731107139杨亮</title>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+		<style type="text/css">
+			#div1 {
+				float: inherit;
+				margin: 100px;
+				font-size: 18px;
+				font-family: 微软雅黑;
+				color: #424242;
+			}
+
+			.td1 {
+				text-align: right;
+				padding: 0 10px;
+				font-family: 宋体;
+				color: black;
+				font-size: 18px;
+				width: auto;
+			}
+
+			.td2 {
+				width: auto;
+			}
+
+			span {
+				color: red;
+				font-weight: 700;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="div1" align="center">
+			<table style="border-collapse: collapse;">
+				<tr>
+					<td class="td1"><span>*</span>邮件地址 </td>
+					<td class="td2"><input type="text" id="useremail"> @ <select style="width: 111px; height: 22px;">
+							<option>163.com</option>
+							<option>qq.com</option>
+							<option>sina.com</option>
+							<option>139.com</option>
+						</select></td>
+				<tr>
+					<td></td>
+					<td id="useremail_tip" style="font-size: 12px;">&nbsp;</td>
+				</tr>
+				</tr>
+				<tr>
+					<td class="td1"><span>*</span>密码 </td>
+					<td><input type="password" id="userpwd" style="width: 100%;"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td style="font-size: 12px;" id="userpwd_tip">&nbsp;</td>
+				</tr>
+				<tr>
+					<td class="td1"><span>*</span>确认密码 </td>
+					<td><input type="password" id="userpwds" style="width: 100%;"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td style="font-size: 12px;" id="userpwds_tip">&nbsp;</td>
+				</tr>
+				<tr>
+				<tr>
+					<td class="td1"><span>*</span>手机号码 </td>
+					<td><input type="number" id="usertel" style="width: 100%;"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td style="font-size: 12px;" id="usertel_tip">&nbsp;</td>
+				</tr>
+
+			</table>
+		</div>
+
+		<script type="text/javascript">
+			$(function() {
+				//验证邮件地址
+				$("#useremail").keyup(function() {
+					$("#useremail_tip").html('6~18个字符，可使用数字字母，下划线，须以字母开头');
+				});
+
+				//验证密码和确认密码
+				$("#userpwd").keyup(function() {
+					var a = $("#useremail").val();
+					var b = $("#userpwd").val();
+					if (b == a) {
+						$("#userpwd_tip").html('<img src="img/感叹号.png" width="12px" height="12px" align="center">密码和用户名不能完全相同');
+						$(this).css("background", "lightcoral");
+					} else {
+						$("#userpwd_tip").html("&nbsp;");
+						$(this).css("background", "");
+					}
+					$("#userpwds_tip").html('请再次填写密码');
+				});
+				$("#userpwds").keyup(function() {
+					var a = $("#userpwds").val();
+					var b = $("#userpwd").val();
+					if (a != b) {
+						$("#userpwds_tip").html('<img src="img/感叹号.png" width="12px" height="12px" align="center">两次输入的密码不一致');
+						$(this).css("background", "lightcoral");
+					} else {
+						$("#userpwds_tip").html('请再次填写密码');
+						$(this).css("background", "");
+					}
+				});
+
+				//验证手机号
+				$("#usertel").keyup(function() {
+					if (!$("#usertel").val().match(
+							/^(((13[0-9]{1})|(14[0-9]{1})|(17[0]{1})|(15[0-3]{1})|(15[5-9]{1})|(18[0-9]{1}))+\d{8})$/)) {
+						$("#usertel_tip").html('<img src="img/感叹号.png" width="12px" height="12px" align="center">请填写正确的手机号');
+						$(this).css("background", "lightcoral");
+					} else {
+						$("#usertel_tip").html("&nbsp;");
+						$(this).css("background", "");
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
