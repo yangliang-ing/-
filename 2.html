@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<!-- <html xmlns="http://www.w3.org/1999/xhtml"> -->
+	<head>
+		<title>201731107139杨亮</title>
+
+		<style type="text/css">
+			table {
+				margin: auto auto;
+				text-align: center;
+				
+			}
+
+			td, th{
+				width: 80px;
+				padding: 4px;
+			}
+		</style>
+
+	</head>
+	<body>
+		<h4 align="center">添加新员工</h4>
+		<div id="" align="center">
+		<form id="info" method="post">
+			name：<input type="text" id="uname">
+			emial：<input type="email" id="uemial">
+			salary：<input type="number" id="usalary">
+			<br/>
+			<br/>
+			<button type="button" id="btn1" value="submit">submit</button>
+		</form>
+		</div>
+		<br>
+		<br>
+		<br>
+		<table id="tab" border="1">
+			<tr id="t1">
+				<th>name</th>
+				<th>email</th>
+				<th>salary</th>
+				<th>&nbsp;</th>
+			</tr>
+		</table>
+		
+		
+		<script language="javascript" type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+		<script language="javascript" type="text/javascript">
+			$(document).ready(function() {
+
+				$("#btn1").click(function() {
+					//创建tr节点
+					var $tr = $("<tr></tr>");
+					//遍历获取输入的内容
+					$("#info input:input").each(function(index, domEle) {
+						//添加td节点
+						var $td = $("<td></td>");
+						//将内容循环添加到创建好的TD中
+						$td.append($(domEle).val());
+						//将td添加到创建好的TR 中
+						$td.appendTo($tr);
+					});
+					//创建TD--删除
+					var $td = $("<td><a href='#' class='del'>delete</a></td>");
+					//将内容循环添加到创建好的TD中
+					$td.appendTo($tr);
+					$tr.appendTo("#tab");
+
+					//执行删除操作
+					$(".del").click(function() {
+						//向上移除tr
+						$(this).parent().parent().remove();
+
+					});
+				});
+
+			});
+		</script>
+	</body>
+</html>

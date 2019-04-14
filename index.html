@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>201731107139杨亮</title>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+	</head>
+
+	<body>
+		省份<select name="prin">
+			<option selected="selected">--请选择--</option>
+			<option value="福建">福建</option>
+			<option value="北京">北京</option>
+			<option value="山东">山东</option>
+			<option value="上海">上海</option>
+		</select>
+		县、市<select id="sel2"><option>--请选择--</option>
+		</select>
+	
+	</body>
+	
+	<script type="text/javascript">
+		function appendShi(shi) { //字符串拼接，拼接市区
+			var fjs = "";
+			for (var i = 0; i < shi.length; i++) {
+				fjs += '<option>' + shi[i] + '</option>';
+			}
+			return fjs;
+		}
+		$(function() {
+			var prince = ['福建', '北京', '山东', '上海'];
+			var fjs = ['厦门', '泉州', '福州'];
+			var bjs = ['北京', '朝阳区', '海淀区', '平谷区'];
+			var shs = ['黄浦区', '长宁区', '宝山区', '嘉定区'];
+			var sds = ['济南', '青岛', '烟台', '日照', '莱芜', 'sss'];
+			
+			$("select[name='prin']").change(function() {
+				var shi = $("#sel2"); //得到第二个select
+				var pri = $("select[name='prin']"); //得到选中的身份的值
+				
+				var newShiSel = $('<select id="sel2"><option>--请选择--</option></select>'); //
+				if (pri.val() == '福建') {
+					newShiSel.append(appendShi(fjs));
+				};
+				if (pri.val() == '北京') {
+					newShiSel.append(appendShi(bjs));
+				};
+				if (pri.val() == '上海') {
+					newShiSel.append(appendShi(shs));
+				};
+				if (pri.val() == '山东') {
+					newShiSel.append(appendShi(sds));
+				};
+				shi.replaceWith(newShiSel);
+				
+			});
+		});
+	</script>
+</html>
